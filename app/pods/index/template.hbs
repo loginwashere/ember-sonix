@@ -1,15 +1,15 @@
 Index
 
 <ul>
-    {{#each model as |trackList|}}
+  {{#each model as |trackList| }}
     <li>
       {{#link-to 'track-list' trackList.id }}
         {{trackList.title}}
       {{/link-to}}
     </li>
-    {{else}}
-      <li>No track lists found</li>
-    {{/each}}
+  {{else}}
+    <li class="empty">No tracklists found</li>
+  {{/each}}
 </ul>
 
 {{outlet}}
