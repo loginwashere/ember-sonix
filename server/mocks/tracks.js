@@ -1,7 +1,4 @@
-module.exports = function(app) {
-  var express = require('express');
-  var tracksRouter = express.Router();
-  var FIXTURES = [
+var FIXTURES = [
     { id: '21', artist: 'Daft Punk', title: 'Lose Yourself to Dance', trackList: '11' },
     { id: '22', artist: 'Chic', title: 'Everybody Dance', trackList: '11' },
     { id: '23', artist: 'Chic', title: 'Good Times', trackList: '11' },
@@ -12,6 +9,9 @@ module.exports = function(app) {
     { id: '28', artist: 'Jerome Isma-Ae', title: 'Underwater Love', trackList: '12' },
     { id: '29', artist: 'Matisyahu', title: 'Jerusalem', trackList: '13' }
   ];
+module.exports = function(app) {
+  var express = require('express');
+  var tracksRouter = express.Router();
 
   tracksRouter.get('/', function(req, res) {
     res.send({
@@ -25,21 +25,19 @@ module.exports = function(app) {
 
   tracksRouter.get('/:id', function(req, res) {
     res.send({
-      'tracks': FIXTURES.filter(function(track){
-        if (track.id === req.params.id) {
-          return track;
-        }
-      })
+      'tracks': {
+        id: FIXTURES.filter(function (track) {
+          return track.id == req.params.id;
+        })[0]
+      }
     });
   });
 
   tracksRouter.put('/:id', function(req, res) {
     res.send({
-      'tracks': FIXTURES.filter(function(track){
-        if (track.id === req.params.id) {
-          return track;
-        }
-      })
+      'tracks': {
+        id: req.params.id
+      }
     });
   });
 
