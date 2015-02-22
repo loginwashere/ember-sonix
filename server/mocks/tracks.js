@@ -19,8 +19,13 @@ module.exports = function(app) {
     });
   });
 
+  var next = 10;
   tracksRouter.post('/', function(req, res) {
-    res.status(201).end();
+    var json = req.body;
+    json.track.id = '2' + next++;
+    res.status(201).send({
+      track: json.track
+    });
   });
 
   tracksRouter.get('/:id', function(req, res) {

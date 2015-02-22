@@ -8,8 +8,6 @@ export default Ember.Component.extend({
   validate () {
     let formValues = this.getProperties('title', 'artist');
     let artistFirstLetter = formValues.artist[0];
-    console.log('artistFirstLetter', artistFirstLetter);
-    console.log('typeof artistFirstLetter', typeof artistFirstLetter);
     this.set('artistStartsWithUpperCase', artistFirstLetter === artistFirstLetter.toUpperCase());
     return this.get('artistStartsWithUpperCase');
   },
