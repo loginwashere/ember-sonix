@@ -22,10 +22,9 @@ module.exports = function(app) {
   var next = 10;
   tracksRouter.post('/', function(req, res) {
     var json = req.body;
-    json.track.id = '2' + next++;
-    res.status(201).send({
-      track: json.track
-    });
+    json.track.id = '2' + next;
+    next += 1;
+    res.send(201, json);
   });
 
   tracksRouter.get('/:id', function(req, res) {
