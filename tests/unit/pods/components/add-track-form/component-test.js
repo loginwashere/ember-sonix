@@ -9,11 +9,16 @@ moduleForComponent('add-track-form', {
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
+  assert.expect(3);
 
   // creates the component instance
   var component = this.subject();
   assert.equal(component._state, 'preRender');
+
+  component.set('title', 'test title');
+  component.set('artist', 'lowercase name');
+  component.validate();
+  assert.equal(component.get('artistStartsWithUpperCase'), false);
 
   // renders the component to the page
   this.render();
